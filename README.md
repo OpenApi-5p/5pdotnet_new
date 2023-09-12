@@ -121,4 +121,12 @@ Download 5Paisaapi-dotnet.dll file and add reference to your desktop/web applica
             obj = connect.CancelOrder(order);
             OrderResponse Cancelres = obj.PlaceOrderResponse;
 
+           //HistoricalData
+            string Exch = "";
+            string ExchType = "";
+            int Scripcode = 0;
+            string day = "";
+            DateTime FromDate = DateTime.Today;
+            DateTime EndDate = DateTime.Today;
+            obj = connect.historical(Exch, ExchType, Scripcode, day, FromDate, EndDate);
        
