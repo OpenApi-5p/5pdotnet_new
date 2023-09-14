@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace>_5PaisaLibrary</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>5Paisaapi-dotnet</AssemblyName>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>5PaisaApi.dotnet</Title>
+    <PackageId>5PaisaApi.dotnet</PackageId>
+    <Authors>5Paisa</Authors>
+    <Company>5Paisa</Company>
+    <Version>1.1</Version>
+    <Description>5PaisaDotNetLibrary</Description>
+    <Copyright>Copyright(c)5Paisa2023</Copyright>
+    <PackageProjectUrl>5Paisa.com</PackageProjectUrl>
+    <PackageReleaseNotes>New Feature</PackageReleaseNotes>
+    <RepositoryUrl>https://github.com/5paisa/5PDotnetTradeLib</RepositoryUrl>
+    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="APIRequest.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Net.WebSockets" Version="4.3.0" />
+    <PackageReference Include="Websocket.Client" Version="4.6.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+</Project>
