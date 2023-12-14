@@ -129,4 +129,49 @@ Download 5Paisaapi-dotnet.dll file and add reference to your desktop/web applica
             DateTime FromDate = DateTime.Today;
             DateTime EndDate = DateTime.Today;
             obj = connect.historical(Exch, ExchType, Scripcode, day, FromDate, EndDate);
+
+           //WebSocket
+            WebSocket _WS = new WebSocket();
+            var exitEvent = new ManualResetEvent(false);
+            string Acc = {{AccessToken}}";
+
+
+            _WS.ConnectForFeed(Acc, ClientCode);
+
+            if (_WS.IsConnected())
+            {
+                _WS.MessageReceived += WriteResult;
+                WebsocketInfo MarketFeed = new WebsocketInfo()
+                {
+                    MarketFeedData = new List<WebSocketMarketFeedDataListReq>()
+                };
+                string[][] arr = new string[3][];
+
+                // Initialize the elements.
+                arr[0] = new string[3] { "N", "C", "11536" };
+                arr[1] = new string[3] { "N", "D", "57919" };
+                arr[2] = new string[3] { "B", "C", "500325" };
+         
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    WebSocketMarketFeedDataListReq a1 = new WebSocketMarketFeedDataListReq();
+                    a1.Exch = arr[i][0];
+                    a1.ExchType = arr[i][1];
+                    a1.ScripCode =Convert.ToInt32( arr[i][2]);
+                  
+                    MarketFeed.MarketFeedData.Add(a1);
+                }
+                MarketFeed.Method = "MarketFeedV3";
+                MarketFeed.Operation = "Subscribe";
+                MarketFeed.ClientCode = ClientCode;
+                _WS.FetchFeed(MarketFeed);
+                //_WS.Close();
+            }
+            exitEvent.WaitOne();
+        }
+        static void WriteResult(object sender, MessageEventArgs e)
+        {
+            Console.WriteLine(" Received : " + e.Message);
+
+        }
        
