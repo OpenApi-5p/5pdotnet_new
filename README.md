@@ -9,7 +9,7 @@ dotnet add package 5PaisaDotNetLibrary 1.1
 Download 5Paisaapi-dotnet.dll file and add reference to your desktop/web application
 # API Usage
 
-            string APIKey = "";
+            string APIKey = ""; // APIKey is UserKey
             string EncryptionKey = "";
             string EncryptUserId = "";
             string RequestToken = "";
