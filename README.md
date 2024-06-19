@@ -53,8 +53,6 @@ Download 5Paisaapi-dotnet.dll file and add reference to your desktop/web applica
                 MarketFeed.MarketFeedData.Add(a1);
             }
 
-            MarketFeed.LastRequestTime = DateTime.Today;
-            MarketFeed.RefreshRate = "";
             obj = connect.MarketFeed(MarketFeed);
             MarketFeedResponse resMarketFeed = obj.MarketFeed;
             //End 
