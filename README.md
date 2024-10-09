@@ -9,7 +9,6 @@
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/github/license/prashant-Sharma-mnit/5pdotnet_new?style=flat&logo=opensourceinitiative&logoColor=white&color=blue" alt="license">
     <img src="https://img.shields.io/github/last-commit/prashant-Sharma-mnit/5pdotnet_new?style=flat&logo=git&logoColor=white&color=blue" alt="last-commit">
     <img src="https://img.shields.io/github/languages/top/prashant-Sharma-mnit/5pdotnet_new?style=flat&color=blue" alt="repo-top-language">
     <img src="https://img.shields.io/github/languages/count/prashant-Sharma-mnit/5pdotnet_new?style=flat&color=blue" alt="repo-language-count">
@@ -154,7 +153,7 @@ Orders can be placed as either **intraday** or **delivery**.
 
 #### Input Parameters
 
-The API can work with either **ScripCode** or **ScripData**. For details on **ScripData** format, refer to the [documentation](https://xstream.5paisa.com/dev-docs/order-management-system/place-order).
+The API can work with either **ScripCode** or **ScripData**. For more details on this api refer to the [documentation](https://xstream.5paisa.com/dev-docs/order-management-system/place-order).
 
 #### Code Example
 
