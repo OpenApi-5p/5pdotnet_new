@@ -54,9 +54,6 @@
   - [Web Socket](#web-socket)
 - [API Reference](#api-reference)
 - [Contributing](#contributing)
-- [License](#license)
-- [Acknowledgments](#acknowledgments)
-
 
 ---
 
@@ -90,14 +87,45 @@ Before using the **5Paisa Connect .NET Library**, ensure that you have the follo
 
 ### Installation via GitHub
 
-```bash
-git clone https://github.com/OpenApi-5p/5pdotnet_new.git
-cd 5pdotnet_new
-```
-Add the DLL to your project references:
-   - In Visual Studio, right-click on your project in Solution Explorer.
-   - Select "Add" > "Reference..."
-   - Browse to the location of `5PaisaConnect.dll` and add it.
+#### Option 1: Cloning the Repository (for advanced users)
+
+1. **Clone the repository**:
+   - Open your terminal (Command Prompt, PowerShell, or Git Bash).
+   - Run the following command to clone the repository:
+     ```bash
+     git clone https://github.com/OpenApi-5p/5pdotnet_new.git
+     cd 5pdotnet_new
+     ```
+
+2. **Build the project to generate the DLL**:
+   - Open the solution file (`5pdotnet_new.sln`) in **Visual Studio**.
+   - Build the solution by going to **Build** > **Build Solution** or pressing `Ctrl+Shift+B`.
+   - The `5PaisaConnect.dll` will be generated in the `bin/Debug` or `bin/Release` folder.
+
+3. **Add the DLL to your project**:
+   - In **Visual Studio**, right-click on your project in **Solution Explorer**.
+   - Select **Add** > **Reference...**.
+   - Browse to the folder where the `5PaisaConnect.dll` was built (e.g., `5pdotnet_new/bin/Release`).
+   - Select and add the `5PaisaConnect.dll` file.
+
+#### Option 2: Downloading via GitHub UI (for beginners)
+
+1. **Download the repository as a ZIP**:
+   - Visit the GitHub repository: [5Paisa Connect .NET](https://github.com/OpenApi-5p/5pdotnet_new).
+   - Click the green **Code** button and select **Download ZIP**.
+   - Extract the ZIP file to a folder on your system.
+
+2. **Build the project**:
+   - Open the solution file (`5pdotnet_new.sln`) in **Visual Studio**.
+   - Build the solution by going to **Build** > **Build Solution** or pressing `Ctrl+Shift+B`.
+   - The `5PaisaConnect.dll` will be generated in the `bin/Debug` or `bin/Release` folder.
+
+3. **Add the DLL to your project**:
+   - In **Visual Studio**, right-click on your project in **Solution Explorer**.
+   - Select **Add** > **Reference...**.
+   - Browse to the folder where the `5PaisaConnect.dll` was built (e.g., `5pdotnet_new/bin/Release`).
+   - Select and add the `5PaisaConnect.dll` file.
+
 ---
 ## API Key Configuration
 
@@ -659,4 +687,3 @@ To foster a positive and collaborative environment, we ask all contributors to:
 By contributing in any of the above ways, you're helping us create a better experience for everyone!
 
 ---
-
