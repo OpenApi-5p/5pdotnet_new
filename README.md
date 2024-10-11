@@ -35,12 +35,28 @@
 - [Overview](#overview)
 - [Features](#features)
 - [Installation](#installation)
+  - [Prerequisites](#prerequisites)
+  - [Installation via GitHub](#installation-via-github)
 - [API Key Configuration](#api-key-configuration)
+- [Generate Access Token](#generate-access-token)
+- [Get TOTP Login](#get-totp-login)
 - [Usage](#usage)
+  - [Place Order](#place-order)
+  - [Modify Order](#modify-order)
+  - [Cancel Order](#cancel-order)
+  - [Order Book](#order-book)
+  - [Trade Book](#trade-book)
+  - [Trade History](#trade-history)
+  - [Net Position](#net-position)
+  - [Historical Data](#historical-data)
+  - [Market Feed](#market-feed)
+  - [Scrip Master](#scrip-master)
+  - [Web Socket](#web-socket)
 - [API Reference](#api-reference)
 - [Contributing](#contributing)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
+
 
 ---
 
@@ -343,7 +359,7 @@ obj = connect.TradeHistory(TradeHistory);
 TradeHistoryResponse resTradeHistory = obj.TradeHistory;
 ```
 ---
-### NetPosition
+### Net Position
 
 The **NetPosition** API provides information about open positions in derivatives contracts and intraday stock positions. Overnight derivative positions can be identified using the `BodQty` flag, while overnight stock positions will not appear as they are converted into holdings.
 
