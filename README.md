@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-    <img src="https://img.shields.io/github/last-commit/prashant-Sharma-mnit/5pdotnet_new?style=flat&logo=git&logoColor=white&color=blue" alt="last-commit">
+    <img src="https://img.shields.io/github/last-commit/OpenApi-5p/5pdotnet_new?style=flat&logo=git&logoColor=white&color=blue" alt="last-commit">
 </p>
 
 <p align="center">
@@ -100,13 +100,13 @@ Before using the **5Paisa Connect .NET Library**, ensure that you have the follo
 2. **Build the project to generate the DLL**:
    - Open the solution file (`5pdotnet_new.sln`) in **Visual Studio**.
    - Build the solution by going to **Build** > **Build Solution** or pressing `Ctrl+Shift+B`.
-   - The `5PaisaConnect.dll` will be generated in the `bin/Debug` or `bin/Release` folder.
+   - The `5Paisaapi-dotnet.dll` will be generated in the `bin/Debug` or `bin/Release` folder.
 
 3. **Add the DLL to your project**:
    - In **Visual Studio**, right-click on your project in **Solution Explorer**.
    - Select **Add** > **Reference...**.
-   - Browse to the folder where the `5PaisaConnect.dll` was built (e.g., `5pdotnet_new/bin/Release`).
-   - Select and add the `5PaisaConnect.dll` file.
+   - Browse to the folder where the `5Paisaapi-dotnet.dll` was built (e.g., `5pdotnet_new/bin/Release`).
+   - Select and add the `5Paisaapi-dotnet.dll` file.
 
 #### Option 2: Downloading via GitHub UI (for beginners)
 
@@ -118,13 +118,13 @@ Before using the **5Paisa Connect .NET Library**, ensure that you have the follo
 2. **Build the project**:
    - Open the solution file (`5pdotnet_new.sln`) in **Visual Studio**.
    - Build the solution by going to **Build** > **Build Solution** or pressing `Ctrl+Shift+B`.
-   - The `5PaisaConnect.dll` will be generated in the `bin/Debug` or `bin/Release` folder.
+   - The `5Paisaapi-dotnet.dll` will be generated in the `bin/Debug` or `bin/Release` folder.
 
 3. **Add the DLL to your project**:
    - In **Visual Studio**, right-click on your project in **Solution Explorer**.
    - Select **Add** > **Reference...**.
-   - Browse to the folder where the `5PaisaConnect.dll` was built (e.g., `5pdotnet_new/bin/Release`).
-   - Select and add the `5PaisaConnect.dll` file.
+   - Browse to the folder where the `5Paisaapi-dotnet.dll` was built (e.g., `5pdotnet_new/bin/Release`).
+   - Select and add the `5Paisaapi-dotnet.dll` file.
 
 ---
 ## API Key Configuration
@@ -149,9 +149,9 @@ OutputBaseClass obj = new OutputBaseClass();
 connect = new _5PaisaAPI(APIKey, EncryptionKey, EncryptUserId);
 Token agr = new Token();
 ```
-### Generate Access Token
+### Generate Access Token - OAUTH
 
-To generate an access token, use the `GetOuthLogin` method with your request token. Here's how you can do it:
+To generate an access token through OAUTH `GetOuthLogin` method with your request token. Request Token can be obtained via OAUTH login approach mentioned [here](https://xstream.5paisa.com/dev-docs/user-authentication-system/oauth-login)  Here's how you can do it:
 
 ```csharp
 // Generate access token using Request Token
@@ -159,9 +159,9 @@ var authResponse = connect.GetOuthLogin(RequestToken);
 var accessToken = authResponse.TokenResponse;
 ```
 
-### Get TOTP Login
+### Generate Access Token - TOTP
 
-To perform **TOTP** (Time-based One-Time Password) login, use the following method:
+To generate an access token through [TOTP](https://xstream.5paisa.com/dev-docs/user-authentication-system/login), use the `GetOuthLogin` method with your TOTP and PIN and the method will generate access token for you. Here's how you can do it:
 
 ```csharp
 // Perform TOTP login using the provided ClientCode, TOTP, and Pin
