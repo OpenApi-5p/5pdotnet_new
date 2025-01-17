@@ -93,7 +93,7 @@ namespace _5PaisaLibrary
     {
         public int Status { get; set; }
         public string Message { get; set; }
-        public List<NetPositionNetWiseDetailsV3> NetPositionDetailV3 { get; set; }
+        public List<NetPositionNetWiseDetailsV3> NetPositionDetail { get; set; }
     }
 
     public class NetPositionNetWiseDetailsV3
