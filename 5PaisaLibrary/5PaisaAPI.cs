@@ -945,7 +945,7 @@ namespace _5PaisaLibrary
                             head = new { key = _apiKey },
                             body = new
                             {
-                                MarketSnapshotData = order.MarketSnapshotData,
+                                Data = order.Data,
                                 ClientCode = order.ClientCode
                             }
 

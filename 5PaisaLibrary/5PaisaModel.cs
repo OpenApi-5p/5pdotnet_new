@@ -527,7 +527,7 @@ namespace _5PaisaLibrary
         public List<MarketFeedDataListReq> MarketFeedData { get; set; }
         public List<MultiOrderMarginReq> Orders { get; set; }
 
-        public List<MarketSnapshotReqBody> MarketSnapshotData { get; set; }
+        public List<MarketSnapshotReqBody> Data { get; set; }
 
     }
     public class WebsocketConnect
