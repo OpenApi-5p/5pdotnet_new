@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.PortableExecutable;
 using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +53,9 @@ namespace _5PaisaLibrary
         public HistoricalDataRes HistoricalWiseData { get; set; }
 
         public object HistoricalData { get; set; }
+        public MultiOrderMarginRes MultiOrderMargin { get; set; }
+        public MarketSnapshotV1Res MarketSnapshotV1 { get; set; }
+        public NetPositionNetWiseV3Res NetPositionNetWiseV3 { get; set; }
 
     }
     public class HistoricalDataRes
@@ -63,7 +67,7 @@ namespace _5PaisaLibrary
 
     public class HistoricalResBody
     {
-   
+
         public ICollection<CandleWiseData> candles { get; set; }
     }
     public class CandleWiseData
@@ -74,7 +78,99 @@ namespace _5PaisaLibrary
         public decimal Low { get; set; }
         public decimal Close { get; set; }
         public Int64 Volume { get; set; }
-    
+
+    }
+
+
+
+    public class NetPositionNetWiseV3Res
+    {
+        public Reshead head { get; set; }
+        public NetPositionNetWiseV3ResBody body { get; set; }
+    }
+
+    public class NetPositionNetWiseV3ResBody
+    {
+        public int Status { get; set; }
+        public string Message { get; set; }
+        public List<NetPositionNetWiseDetailsV3> NetPositionDetail { get; set; }
+    }
+
+    public class NetPositionNetWiseDetailsV3
+    {
+        public char Exch { get; set; }
+        public char ExchType { get; set; }
+        public int ScripCode { get; set; }
+        public string ScripName { get; set; }
+        public int BuyQty { get; set; }
+        public double BuyAvgRate { get; set; }
+        public double BuyValue { get; set; }
+        public int SellQty { get; set; }
+        public double SellAvgRate { get; set; }
+        public double SellValue { get; set; }
+        public int NetQty { get; set; }
+        public double BookedPL { get; set; }
+        public double LTP { get; set; }
+        public char OrderFor { get; set; }
+        public int BodQty { get; set; }
+        public double PreviousClose { get; set; }
+        public double MTOM { get; set; }
+        public double Multiplier { get; set; }
+        public double AvgRate { get; set; }
+        public double CFQty { get; set; }
+        public double AvgCFQty { get; set; }
+        public double LotSize { get; set; }
+        public int ConvertedQty { get; set; }
+        public bool IsPhysicalDelivery { get; set; }
+        public double AvgCFPrice { get; set; }
+    }
+
+
+
+
+    public class MarketSnapshotV1Res
+    {
+
+        public Reshead head { get; set; }
+        public MarketSnapshotV1ResBody body { get; set; }
+    }
+
+    public class MarketSnapshotV1ResBody
+    {
+        public int Status { get; set; }
+        public string Message { get; set; }
+        public int CacheTime { get; set; }
+        public DateTime TimeStamp { get; set; }
+        public List<MarketSnapshotV1ResData> Data { get; set; }
+    }
+
+    public class MarketSnapshotV1ResData
+    {
+        public DateTime LastTradeTime { get; set; }
+        public string NetChange { get; set; }
+        public string Open { get; set; }
+        public string High { get; set; }
+        public string Low { get; set; }
+        public string PClose { get; set; }
+        public string Volume { get; set; }
+        public double AverageTradePrice { get; set; }
+        public double LastTradedPrice { get; set; }
+        public long LastQuantity { get; set; }
+        public long BuyQuantity { get; set; }
+        public long SellQuantity { get; set; }
+        public long TotalBuyQuantity { get; set; }
+        public long TotalSellQuantity { get; set; }
+        public string OpenInterest { get; set; }
+        public string Exchange { get; set; }
+        public string ExchangeType { get; set; }
+        public int ScripCode { get; set; }
+        public string AHigh { get; set; }
+        public string ALow { get; set; }
+        public string MarketCapital { get; set; }
+        public string ExposureCategory { get; set; }
+        public double UpperCircuitLimit { get; set; }
+        public double LowerCircuitLimit { get; set; }
+        public double PrevOpenInterest { get; set; }
     }
     public class NetPositionNetWiseRes
     {
@@ -148,6 +244,25 @@ namespace _5PaisaLibrary
 
         public string Symbol { get; set; }
     }
+
+
+    public class MultiOrderMarginRes
+    {
+        public Reshead head { get; set; }
+        public MultiOrderMarginResBody body { get; set; }
+
+    }
+
+    public class MultiOrderMarginResBody
+    {
+        public int Status { get; set; }
+        public string Message { get; set; }
+        public double AvailableMargin { get; set; }
+        public double TotalMarginRequired { get; set; }
+    }
+
+
+
     public class OrderBookResponse
     {
         public OrderBookMain body { get; set; }
@@ -408,9 +523,11 @@ namespace _5PaisaLibrary
         public DateTime LastRequestTime { get; set; }
 
         public string RefreshRate { get; set; }
-
+        public string CoverPositions { get; set; }
         public List<MarketFeedDataListReq> MarketFeedData { get; set; }
+        public List<MultiOrderMarginReq> Orders { get; set; }
 
+        public List<MarketSnapshotReqBody> Data { get; set; }
 
     }
     public class WebsocketConnect
@@ -455,7 +572,16 @@ namespace _5PaisaLibrary
         public int ScripCode { get; set; }
 
         public string ScripData { get; set; }
+    }
 
+
+
+    public class MarketSnapshotReqBody
+    {
+        public string Exchange { get; set; }
+        public string ExchangeType { get; set; }
+        public int ScripCode { get; set; }
+        public string ScripData { get; set; }
 
     }
     public class ExchOrderIDList
@@ -464,5 +590,20 @@ namespace _5PaisaLibrary
     }
 
 
+    public partial class MultiOrderMarginReq
+    {
+        public string Exch { get; set; }
+        public string ExchType { get; set; }
+        public int ScripCode { get; set; }
+        public string ScripData { get; set; }
+        public string PlaceModifyCancel { get; set; } = "P"; // Hardcoded value
+        public string OrderType { get; set; }
+        public double Price { get; set; }
+        public int Qty { get; set; }
+        public bool IsIntraday { get; set; }
+    }
+
+
 }
+
 

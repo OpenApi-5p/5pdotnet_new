@@ -800,6 +800,198 @@ namespace _5PaisaLibrary
 
         #endregion
 
+        #region MultiOrderMargin
+        public OutputBaseClass MultiOrderMargin(OrderInfo order)
+        {
+            OutputBaseClass res = new OutputBaseClass();
+
+            res.http_code = "200";
+            try
+            {
+                Token Token = this.Token;
+                if (Token != null)
+                {
+                    if (ValidateToken(Token))
+                    {
+                        string URL = _root + "MultiOrderMargin";
+                        var dataStringSession = JsonConvert.SerializeObject(new
+                        {
+                            head = new { key = _apiKey },       //MultiOrderMargin
+                            body = new
+                            {
+                                ClientCode = order.ClientCode,
+                                CoverPositions = order.CoverPositions,
+                                Orders = order.Orders
+
+                            }
+                        });
+
+                        string Json = POSTWebRequest(Token, URL, dataStringSession);
+                        MultiOrderMarginRes pres = JsonConvert.DeserializeObject<MultiOrderMarginRes>(Json);
+
+                        if (pres.body.Status == 0)
+                        {
+                            res.MultiOrderMargin = pres;
+                            res.status = Convert.ToString(pres.body.Status);
+                            res.http_error = pres.body.Message;
+                        }
+                        else
+                        {
+                            res.status = Convert.ToString(pres.body.Status);
+                            res.http_error = pres.body.Message;
+                        }
+                    }
+                    else
+                    {
+                        res.status = "-1";
+                        res.http_error = "Token not valid";
+                    }
+                }
+                else
+                {
+                    res.status = "-1";
+                    res.http_error = "Token not exist";
+                }
+            }
+            catch (Exception ex)
+            {
+                res.http_error = ex.Message;
+            }
+            return res;
+        }
+        #endregion
+
+        #region NetPositionNetWiseV3
+        public OutputBaseClass NetPositionNetWiseV3(OrderInfo order)
+        {
+            OutputBaseClass res = new OutputBaseClass();
+
+            res.http_code = "200";
+            try
+            {
+                Token Token = this.Token;
+                if (Token != null)
+                {
+                    if (ValidateToken(Token))
+                    {
+                        string URL = _root + "V3/NetPositionNetWise";
+                        var dataStringSession = JsonConvert.SerializeObject(new
+                        {
+                            head = new { key = _apiKey },
+                            body = new
+                            {
+                                ClientCode = order.ClientCode
+                            }
+
+                        });
+
+                        string Json = POSTWebRequest(Token, URL, dataStringSession);
+                        NetPositionNetWiseV3Res pres = JsonConvert.DeserializeObject<NetPositionNetWiseV3Res>(Json);
+                        if (pres.body.Status == 0)
+                        {
+                            // OrderResponse pres = JsonConvert.DeserializeObject<OrderResponse>(Json);
+                            res.NetPositionNetWiseV3 = pres;
+                            res.status = Convert.ToString(pres.body.Status);
+                            res.http_error = pres.body.Message;
+
+                        }
+                        else
+                        {
+                            res.status = Convert.ToString(pres.body.Status);
+                            res.http_error = pres.body.Message;
+                            //res.http_error = Json.Replace("PostError:", "");
+                        }
+                    }
+                    else
+                    {
+                        res.status = "-1";
+                        res.http_error = "Token not exist";
+                    }
+                }
+                else
+                {
+                    res.status = "-1";
+                    res.http_error = "Token not exist";
+                }
+            }
+            catch (Exception ex)
+            {
+                //res.status = false;
+                // res.http_code = "404";
+                res.http_error = ex.Message;
+            }
+            return res;
+
+        }
+
+        #endregion
+
+        #region MarketSnapshotV1
+        public OutputBaseClass MarketSnapshot(OrderInfo order)
+        {
+            OutputBaseClass res = new OutputBaseClass();
+
+            res.http_code = "200";
+            try
+            {
+                Token Token = this.Token;
+                if (Token != null)
+                {
+                    if (ValidateToken(Token))
+                    {
+                        string URL = _root + "V1/MarketSnapshot";
+                        var dataStringSession = JsonConvert.SerializeObject(new
+                        {
+                            head = new { key = _apiKey },
+                            body = new
+                            {
+                                Data = order.Data,
+                                ClientCode = order.ClientCode
+                            }
+
+                        }); ;
+
+                        string Json = POSTWebRequest(Token, URL, dataStringSession);
+                        MarketSnapshotV1Res pres = JsonConvert.DeserializeObject<MarketSnapshotV1Res>(Json);
+                        if (pres.body.Status == 0)
+                        {
+                            // OrderResponse pres = JsonConvert.DeserializeObject<OrderResponse>(Json);
+                            res.MarketSnapshotV1 = pres;
+                            res.status = Convert.ToString(pres.body.Status);
+                            res.http_error = pres.body.Message;
+
+                        }
+                        else
+                        {
+                            res.status = Convert.ToString(pres.body.Status);
+                            res.http_error = pres.body.Message;
+                            //res.http_error = Json.Replace("PostError:", "");
+                        }
+                    }
+                    else
+                    {
+                        res.status = "-1";
+                        res.http_error = "Token not exist";
+                    }
+                }
+                else
+                {
+                    res.status = "-1";
+                    res.http_error = "Token not exist";
+                }
+            }
+            catch (Exception ex)
+            {
+                //res.status = false;
+                // res.http_code = "404";
+                res.http_error = ex.Message;
+            }
+            return res;
+
+        }
+        #endregion
+
+
         #region ValidateToken
         private bool ValidateToken(Token token)
         {
