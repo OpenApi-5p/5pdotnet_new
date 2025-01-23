@@ -179,7 +179,7 @@ if (response.status == "0")
 
 ### Place Order
 
-The **Place Order** API enables users to execute trades through their demat accounts. This API is essential for placing various types of orders securely.
+The **Place Order** API enables user to execute trades through their demat accounts. This API is essential for placing various types of orders securely.
 
 #### Authentication
 
